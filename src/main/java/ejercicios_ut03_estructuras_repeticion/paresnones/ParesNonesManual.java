@@ -1,7 +1,6 @@
 package ejercicios_ut03_estructuras_repeticion.paresnones;
 
 import java.util.Scanner;
-import java.util.Random;
 
 public class ParesNonesManual {
     // entrada manual para jugar a pares o nones
