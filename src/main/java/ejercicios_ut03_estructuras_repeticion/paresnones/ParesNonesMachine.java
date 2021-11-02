@@ -12,14 +12,15 @@ public class ParesNonesMachine {
         final int DEDOS_MIN = 0;
 
         String decisionJ1;
-        String decisionJ2;
+        String decisionMaquina;
         String paridadTotal;
         int dedoJ1;
-        int dedoJ2;
+        int dedoMaquina;
         int dedoTotal;
         int paridadDedos;
         
         Scanner entradaTeclado = new Scanner(System.in);
+        Random numAleatorio = new Random();
 
         // tras importar el Scanner y el Random, declarar e inicializar las 
         // constantes y declarar las variables e inicializar el método Scanner, 
@@ -27,9 +28,9 @@ public class ParesNonesMachine {
         
         
         // esto sería el modulo A 
-        System.out.println("Buenas Jugador 1 y Jugador 2, las reglas son simples \n"
-                + "cada jugador sacará tantos dedos como quiera después de decir si el número resultante será par o impar, \n"
-                + "luego, se sumaran. \n"
+        System.out.println("Buenas Jugador 1, las reglas son simples \n"
+                + "sacará tantos dedos como quiera después de decir si el número resultante será par o impar, \n"
+                + "luego, se sumaran con los de la máquina. \n"
                 + "Quien acierte en su decisión, gana.");
 
         // empezamos, con los controles de seguridad y la inicialización de las variables 
@@ -46,29 +47,29 @@ public class ParesNonesMachine {
         } while (!(dedoJ1 >= DEDOS_MIN && dedoJ1 <= DEDOS_MAX));
 
         if ("pares".equals(decisionJ1)) {
-            decisionJ2 = "nones";
+            decisionMaquina = "nones";
 
         } else {
-            decisionJ2 = "pares";
+            decisionMaquina = "pares";
         }
 
-        System.out.println("Ahora, Jugador 2, como el Jugador 1 ha elegido " + decisionJ1 + ", usted eligirá " + decisionJ2);
+        System.out.println("Ahora, nuestra IA Sally, como usted, Jugador 1 ha elegido " + decisionJ1 + ", eligirá " + decisionMaquina);
         
-        do {
-            System.out.println("¿Cuántos dedos sacará?\n"
-                    + "Recuerde que puede sacar el puño vacío y máximo diez dedos.");
-            dedoJ2 = entradaTeclado.nextInt();
-        } while (!(dedoJ2 >= DEDOS_MIN && dedoJ2 <= DEDOS_MAX));
+       
+       
+
+        dedoMaquina = numAleatorio.nextInt(DEDOS_MAX - DEDOS_MIN + 1);
+        
 
         // procederemos a la parte final donde se indicaran las elecciones de cada jugador
         // y el resultado del encuentro
         
         System.out.println("El jugador 1 ha elegido " + decisionJ1);
         System.out.println("Y ha sacado " + dedoJ1 + " dedo(s).");
-        System.out.println("El jugador 2 elige " + decisionJ2);
-        System.out.println("Y ha sacado " + dedoJ2 + " dedo(s).");
+        System.out.println("El jugador 2 elige " + decisionMaquina);
+        System.out.println("Y ha sacado " + dedoMaquina + " dedo(s).");
         
-        dedoTotal = dedoJ1 + dedoJ2;
+        dedoTotal = dedoJ1 + dedoMaquina;
         paridadDedos = dedoTotal %2;
         
         if (paridadDedos == 0) {
@@ -84,7 +85,7 @@ public class ParesNonesMachine {
         if (paridadTotal.equals(decisionJ1)) {
             System.out.println("El Jugador 1 ha ganado.");  
         } else {
-            System.out.println("El Jugador 2 ha ganado.");
+            System.out.println("Gana Sally.");
         }
         
         
